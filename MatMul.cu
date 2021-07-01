@@ -86,7 +86,7 @@ int main()
     cudaMemPrefetchAsync(c, bytes, id);
 
     //Launching kernel
-    multKernel <<< grid, theads >>> (a, b, c, n);
+    multKernel <<< grid, threads >>> (a, b, c, n);
 
     //Synchronization needed because to make sure kernel is done
     cudaDeviceSynchronize();
