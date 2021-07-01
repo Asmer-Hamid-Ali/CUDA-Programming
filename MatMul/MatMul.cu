@@ -28,7 +28,7 @@ int main()
     int n = 1 << 10;
 
     //Size (in bytes) of mathrix
-    size_t bytes = n * n * sizeof(int); 
+    size_t bytes = n * n * sizeof(int);
 
     //CPU pointers
     int* a, * b, * c;
@@ -36,7 +36,7 @@ int main()
     //Allocate CPU memory
     a = (int*)malloc(bytes);
     b = (int*)malloc(bytes);
-    c = (int*)malloc(bytes);*/
+    c = (int*)malloc(bytes);
 
     //Device pointer
     int* da, * db, * dc;
@@ -66,7 +66,7 @@ int main()
     dim3 threads(block_size, block_size); //Dimension of block
 
     //Launching kernel
-    multKernel <<< grid, threads >>> (a, b, c, n);
+    multKernel << < grid, threads >> > (a, b, c, n);
 
     //Copy back to host
     cudaMemcpy(c, dc, bytes, cudaMemcpyDeviceToHost);
